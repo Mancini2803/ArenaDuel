@@ -1,0 +1,12 @@
+{
+  "name": "arena-duel",
+  "version": "1.0.0",
+  "description": "Jogo de arena em pixel art para 2 jogadores ou contra bot, feito com HTML, CSS e JavaScript puro.",
+  "private": true,
+  "scripts": {
+    "test": "node tests/smoke.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

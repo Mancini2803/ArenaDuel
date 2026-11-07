@@ -1,0 +1,116 @@
+/* Layout: uma coluna estilo fliperama. A tela do jogo em cima e os cartões de controles embaixo. */
+:root {
+  --bg: #0e0b1a;
+  --panel: #181330;
+  --line: #2d2552;
+  --ink: #efe9ff;
+  --muted: #9d94c4;
+  --p1: #4ad8ff;
+  --p2: #ff5e7a;
+  --gold: #ffd23f;
+  --font-display: "Press Start 2P", "Courier New", monospace;
+  --font-body: "Chakra Petch", system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+}
+
+.wrap { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+h1 { font-family: var(--font-display); font-size: 16px; font-weight: 400; letter-spacing: 1px; margin: 0; text-wrap: balance; }
+h1 span:first-child { color: var(--p1); }
+h1 span:last-child { color: var(--p2); }
+
+.tools { display: flex; gap: 8px; }
+
+button.tool {
+  font: 500 13px var(--font-body);
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+button.tool:hover { border-color: var(--muted); }
+button.tool:focus-visible,
+canvas:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* Gabinete do fliperama */
+.cabinet {
+  background: #07050f;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 0 4px var(--panel), 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+
+canvas#game {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background: #000;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.hint { color: var(--muted); font-size: 13px; margin: 0; text-align: center; }
+
+/* Cartões de controles */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; min-width: 0; }
+.card h2 { font-family: var(--font-display); font-size: 11px; font-weight: 400; margin: 0 0 12px; letter-spacing: 0.5px; }
+.card.p1 h2 { color: var(--p1); }
+.card.p2 h2 { color: var(--p2); }
+.card.pw h2 { color: var(--gold); }
+
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; border-top: 1px solid var(--line); }
+.row:first-of-type { border-top: 0; }
+.row b { font-weight: 500; color: var(--muted); font-size: 13px; }
+
+.keys { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+
+kbd {
+  font: 600 12px var(--font-body);
+  min-width: 26px;
+  height: 26px;
+  padding: 0 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #241d45;
+  color: var(--ink);
+  border: 1px solid #3b3166;
+  border-bottom-width: 3px;
+  border-radius: 4px;
+}
+
+.pw ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.pw li { display: flex; gap: 10px; align-items: center; font-size: 14px; }
+.dot { width: 14px; height: 14px; flex: none; border-radius: 2px; }
+.rules { color: var(--muted); font-size: 13px; margin: 12px 0 0; }
+
+@media (max-width: 480px) {
+  h1 { font-size: 13px; }
+  .cabinet { padding: 8px; }
+}

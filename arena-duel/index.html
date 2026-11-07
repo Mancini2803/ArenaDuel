@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Arena Duel</title>
+  <meta name="description" content="Arena pixel art para dois jogadores no teclado ou solo contra um bot. Feito com HTML, CSS e JavaScript puro.">
+  <meta name="theme-color" content="#0e0b1a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230e0b1a'/%3E%3Crect x='2' y='4' width='5' height='8' fill='%234ad8ff'/%3E%3Crect x='9' y='4' width='5' height='8' fill='%23ff5e7a'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Chakra+Petch:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1><span>ARENA</span> <span>DUEL</span></h1>
+      <div class="tools">
+        <button class="tool" id="btnMute" type="button">Som: ligado</button>
+        <button class="tool" id="btnFull" type="button">Tela cheia</button>
+      </div>
+    </header>
+
+    <div class="cabinet">
+      <canvas id="game" width="320" height="200" tabindex="0" aria-label="Tela do jogo Arena Duel"></canvas>
+      <p class="hint">Clique na tela e jogue com o teclado. Melhor de 3 rounds.</p>
+      <noscript><p class="hint">Este jogo precisa de JavaScript ligado no navegador.</p></noscript>
+    </div>
+
+    <div class="cards">
+      <section class="card p1">
+        <h2>JOGADOR 1</h2>
+        <div class="row"><b>Mover</b><span class="keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></div>
+        <div class="row"><b>Atirar</b><span class="keys"><kbd>F</kbd><kbd>Espaço</kbd></span></div>
+        <div class="row"><b>Dash</b><span class="keys"><kbd>G</kbd></span></div>
+      </section>
+      <section class="card p2">
+        <h2>JOGADOR 2</h2>
+        <div class="row"><b>Mover</b><span class="keys"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></span></div>
+        <div class="row"><b>Atirar</b><span class="keys"><kbd>L</kbd></span></div>
+        <div class="row"><b>Dash</b><span class="keys"><kbd>K</kbd></span></div>
+      </section>
+      <section class="card pw">
+        <h2>POWER-UPS</h2>
+        <ul>
+          <li><span class="dot" style="background:#ff4d6d"></span>Coração: recupera 2 de vida</li>
+          <li><span class="dot" style="background:#ffd23f"></span>Raio: tiro rápido por 6 s</li>
+          <li><span class="dot" style="background:#4ad8ff"></span>Escudo: bloqueia um dano</li>
+          <li><span class="dot" style="background:#d65bff"></span>Triplo: três tiros por 6 s</li>
+        </ul>
+        <p class="rules">Tiros ricocheteiam uma vez nas paredes. Caixas quebram com 2 tiros e podem soltar power-ups. P pausa, M muda o som e Esc volta ao menu.</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- A ordem importa: cada arquivo usa os anteriores. -->
+  <script src="js/config.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/maps.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/draw.js"></script>
+  <script src="js/powerups.js"></script>
+  <script src="js/projectiles.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
